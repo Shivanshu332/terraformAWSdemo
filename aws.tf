@@ -5,3 +5,10 @@ resource "aws_s3_bucket" "demos3" {
         description = "Demo s3 bucket"
     }
 }
+terraform {
+    backend "s3" {
+        bucket = "shivanshu-terraform-state" 
+        key    = "terraform-s3/s3state.tfstate"
+        region = "ap-south-1"
+    }
+}
