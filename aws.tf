@@ -1,7 +1,7 @@
 resource "aws_s3_bucket" "demos3" {
-    bucket = "shivanshu-s3-demo"
+    bucket = "shivanshu-aws-s3-demo"
     tags = {
-        name = "shivanshu-s3-demo"
+        name = "shivanshu-aws-s3-demo"
         description = "Demo s3 bucket"
     }
 }
