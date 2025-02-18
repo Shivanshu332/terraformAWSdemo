@@ -25,7 +25,7 @@ resource "aws_subnet" "shiv_private_subnet" {
 }
 
 resource "aws_internet_gateway" "internet_gateway" {
-    vpc_id = aws_pc.shiv_vpc.id
+    vpc_id = aws_vpc.shiv_vpc.id
 
     tags = {
         Name = "shiv_internet_gateway"
@@ -41,7 +41,7 @@ resource "aws_route_table" "public_RT" {
     }
 
     tags = {
-        Name = public_RT
+        Name = "public_RT"
     }
 }
 
@@ -51,7 +51,7 @@ resource "aws_route_table_association" "public_RT_association"{
 }
 
 resource "aws_eip" "elastic_ip" {
-    domain = vpc
+    domain = aws_vpc.shiv_vpc
 }
 
 resource "aws_nat_gateway" "nat_gateway"{
@@ -128,7 +128,7 @@ resource "aws_instance" "web_instance" {
     instance_type = "t2.micro"
     vpc_security_group_ids = [aws_security_group.webSG.id]
     subnet_id = aws_subnet.shiv_public_subnet.id
-    user_data = base64encode(file(userdata.sh))
+    user_data = file("${path.module}/userdata.sh")
 
     tags = {
         Name = "web_instance"
@@ -140,7 +140,7 @@ resource "aws_instance" "web_instance2" {
     instance_type = "t2.micro"
     vpc_security_group_ids = [aws_security_group.webSG.id]
     subnet_id = aws_subnet.shiv_private_subnet.id
-    user_data = base64encode(file(userdata.sh))
+    user_data = file("${path.module}/userdata.sh")
 
     tags = {
         Name = "web_instance2"
