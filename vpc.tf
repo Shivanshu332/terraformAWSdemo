@@ -50,34 +50,34 @@ resource "aws_route_table_association" "public_RT_association"{
     route_table_id = aws_route_table.public_RT.id
 }
 
-resource "aws_eip" "elastic_ip" {
-    domain = "vpc"
-    instance = aws_instance.web_instance2.id
+# resource "aws_eip" "elastic_ip" {
+#     domain = "vpc"
+#     instance = aws_instance.web_instance2.id
 
-    depends_on = [ aws_instance.web_instance2 ]
-}
+#     depends_on = [ aws_instance.web_instance2 ]
+# }
 
-resource "aws_nat_gateway" "nat_gateway"{
-    allocation_id = aws_eip.elastic_ip.id
-    subnet_id = aws_subnet.shiv_public_subnet.id
-}
+# resource "aws_nat_gateway" "nat_gateway"{
+#     allocation_id = aws_eip.elastic_ip.id
+#     subnet_id = aws_subnet.shiv_public_subnet.id
+# }
 
-resource "aws_route_table" "private_RT"{
-    vpc_id = aws_vpc.shiv_vpc.id
+# resource "aws_route_table" "private_RT"{
+#     vpc_id = aws_vpc.shiv_vpc.id
 
-    route {
-        cidr_block = "0.0.0.0/0"
-        gateway_id = aws_nat_gateway.nat_gateway.id
-    }
-    tags = {
-        Name = "privateRT"
-    }
-}
+#     route {
+#         cidr_block = "0.0.0.0/0"
+#         gateway_id = aws_nat_gateway.nat_gateway.id
+#     }
+#     tags = {
+#         Name = "privateRT"
+#     }
+# }
 
-resource "aws_route_table_association" "private_RT_association" {
-    subnet_id = aws_subnet.shiv_private_subnet.id
-    route_table_id = aws_route_table.private_RT.id
-}
+# resource "aws_route_table_association" "private_RT_association" {
+#     subnet_id = aws_subnet.shiv_private_subnet.id
+#     route_table_id = aws_route_table.private_RT.id
+# }
 
 resource "aws_security_group" "webSG" {
     name        = "web_security_group"
