@@ -136,7 +136,7 @@ resource "aws_instance" "web_instance" {
 }
 
 resource "aws_instance" "web_instance2" {
-    ami           = data.aws_ami.ubuntu.id
+    ami           = data.aws_ami.rhel.id
     instance_type = "t2.micro"
     vpc_security_group_ids = [aws_security_group.webSG.id]
     subnet_id = aws_subnet.shiv_private_subnet.id
