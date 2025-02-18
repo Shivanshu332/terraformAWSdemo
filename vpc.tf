@@ -47,7 +47,7 @@ resource "aws_route_table" "public_RT" {
 
 resource "aws_route_table_association" "public_RT_association"{
     subnet_id = aws_subnet.shiv_public_subnet.id
-    route_table_id = aws_route_table.public_route_table.id
+    route_table_id = aws_route_table.public_RT.id
 }
 
 resource "aws_eip" "elastic_ip" {
@@ -56,7 +56,7 @@ resource "aws_eip" "elastic_ip" {
 
 resource "aws_nat_gateway" "nat_gateway"{
     allocation_id = aws_eip.elastic_ip.id
-    subnet_id = aws_subnet.shiv_public_subnet_id
+    subnet_id = aws_subnet.shiv_public_subnet.id
 }
 
 resource "aws_route_table" "private_RT"{
