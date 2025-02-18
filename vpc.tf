@@ -73,7 +73,7 @@ resource "aws_route_table" "private_RT"{
 
 resource "aws_route_table_association" "private_RT_association" {
     subnet_id = aws_subnet.shiv_private_subnet.id
-    route_table_id = aws_route_table.private_RT
+    route_table_id = aws_route_table.private_RT.id
 }
 
 resource "aws_security_group" "webSG" {
