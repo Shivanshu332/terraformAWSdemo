@@ -52,6 +52,7 @@ resource "aws_route_table_association" "public_RT_association"{
 
 resource "aws_eip" "elastic_ip" {
     domain = "vpc"
+    instance = aws_instance.web_instance2.id
 }
 
 resource "aws_nat_gateway" "nat_gateway"{
