@@ -1,5 +1,5 @@
 resource "aws_vpc" "shiv_vpc" {
-    cidr_block = "12.0.1.0/16"
+    cidr_block = "12.0.0.0/16"
     tags = {
         Name = "shiv_vpc"
     }
