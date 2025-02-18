@@ -51,7 +51,7 @@ resource "aws_route_table_association" "public_RT_association"{
 }
 
 resource "aws_eip" "elastic_ip" {
-    domain = aws_vpc.shiv_vpc
+    domain = "vpc"
 }
 
 resource "aws_nat_gateway" "nat_gateway"{
@@ -79,7 +79,7 @@ resource "aws_route_table_association" "private_RT_association" {
 resource "aws_security_group" "webSG" {
     name        = "web_security_group"
     
-    vpc_id      = aws_vpc.shiv_vpc
+    vpc_id      = aws_vpc.shiv_vpc.id
 
     tags = {
         Name = "web_security_group"
@@ -107,12 +107,12 @@ resource "aws_security_group" "webSG" {
     }
 }
 
-data "aws_ami" "ubuntu" {
+data "aws_ami" "rhel" {
     most_recent = true
 
     filter {
         name   = "name"
-        values = ["amazon/RHEL-9.5.0_HVM-20241211-x86_64-0-Hourly2-GP3*"]
+        values = ["RHEL-9.5.0_HVM-20241211-x86_64-0-Hourly2-GP3"]
     }
 
     filter {
@@ -124,7 +124,7 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "web_instance" {
-    ami           = data.aws_ami.ubuntu.id
+    ami           = data.aws_ami.rhel.id
     instance_type = "t2.micro"
     vpc_security_group_ids = [aws_security_group.webSG.id]
     subnet_id = aws_subnet.shiv_public_subnet.id
