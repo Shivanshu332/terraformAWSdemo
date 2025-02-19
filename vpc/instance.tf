@@ -28,7 +28,7 @@ resource "aws_instance" "web_instance" {
 
 resource "aws_instance" "web_instance2" {
     ami           = data.aws_ami.rhel.id
-    instance_type = var.instance_name_private
+    instance_type = var.instance_type_private
     vpc_security_group_ids = [aws_security_group.webSG.id]
     subnet_id = aws_subnet.shiv_private_subnet.id
     user_data = file("${path.module}/userdata.sh")
