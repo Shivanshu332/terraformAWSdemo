@@ -1,4 +1,5 @@
 resource "aws_vpc" "shiv_vpc" {
+    count = var.vpc_required == true ? 1 : 0
     cidr_block = "12.0.0.0/16"
     tags = {
         Name = var.vpc_name
@@ -6,6 +7,7 @@ resource "aws_vpc" "shiv_vpc" {
 }
 
 resource "aws_subnet" "shiv_public_subnet" {
+    count = var.public_subnet_required == true ? 1 : 0
     vpc_id                  = aws_vpc.shiv_vpc.id
     cidr_block              = "12.0.1.0/24"
     availability_zone       = "ap-south-1a"
@@ -16,6 +18,7 @@ resource "aws_subnet" "shiv_public_subnet" {
 }
 
 resource "aws_subnet" "shiv_private_subnet" {
+    count = var.private_subnet_required == true ? 1 : 0
     vpc_id            = aws_vpc.shiv_vpc.id
     cidr_block        = "12.0.2.0/24"
     availability_zone = "ap-south-1b"
@@ -25,6 +28,7 @@ resource "aws_subnet" "shiv_private_subnet" {
 }
 
 resource "aws_internet_gateway" "internet_gateway" {
+    count = var.internet_gateway_required == true ? 1 : 0
     vpc_id = aws_vpc.shiv_vpc.id
 
     tags = {
