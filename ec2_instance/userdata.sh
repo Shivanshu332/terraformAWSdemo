@@ -12,11 +12,28 @@ INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
 # Install the AWS CLI
 yum install -y aws-cli
 
+# Define custom username and password
+USERNAME="cadmin"
+PASSWORD="1234"
+
+# Create the new user and set the password
+useradd -m -s /bin/bash "$USERNAME"
+echo "$USERNAME:$PASSWORD" | chpasswd
+
+# Grant sudo privileges (optional)
+usermod -aG sudo "$USERNAME"
+
+# Enable password authentication in SSH
+sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
+# Restart SSH service to apply changes
+systemctl restart sshd
+
+
 # Ensure the web root directory exists
 mkdir -p /var/www/html
 
-# Download the images from the S3 bucket (Uncomment and modify as needed)
-# aws s3 cp s3://myterraformprojectbucket2023/project.webp /var/www/html/project.png --acl public-read
 
 # Create a simple HTML file with portfolio content
 cat <<EOF > /var/www/html/index.html
@@ -39,7 +56,7 @@ cat <<EOF > /var/www/html/index.html
 <body>
   <h1>Terraform Project Server 1</h1>
   <h2>Instance ID: <span style="color:green">$INSTANCE_ID</span></h2>
-  <p>Welcome to Abhishek Veeramalla's Channel</p>
+  <p>Welcome to Shivanshu's instance</p>
 </body>
 </html>
 EOF
