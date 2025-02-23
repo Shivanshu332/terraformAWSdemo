@@ -13,23 +13,23 @@ data "aws_ami" "rhel" {
 
 resource "aws_launch_template" "public_launch_template" {
     name_prefix            = "public_launch_template"
-    image_id               = data.aws_ami.rhel
+    image_id               = data.aws_ami.rhel.id
     instance_type          = var.instance_type_public
     vpc_security_group_ids = [aws_security_group.webSG.id]
     user_data              = file("${path.module}/userdata.sh")
     network_interfaces {
-        subnet_id = aws_subnet.shiv_public_subnet
+        subnet_id = aws_subnet.shiv_public_subnet.id
     }
 }
 
 resource "aws_launch_template" "private_launch_template" {
     name_prefix            = "private_launch_template"
-    image_id               = data.aws_ami.rhel
+    image_id               = data.aws_ami.rhel.id
     instance_type          = var.instance_type_public
     vpc_security_group_ids = [aws_security_group.webSG.id]
     user_data              = file("${path.module}/userdata.sh")
     network_interfaces {
-    subnet_id = aws_subnet.shiv_private_subnet
+    subnet_id = aws_subnet.shiv_private_subnet.id
     }
 }
 
