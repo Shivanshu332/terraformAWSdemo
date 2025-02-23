@@ -4,10 +4,6 @@ module  vpc  {
   public_subnet_name          = var.public_subnet_name
   private_subnet_name         = var.private_subnet_name
   internet_gateway_name       = var.internet_gateway_name
-  vpc_required                = var.vpc_required             
-  private_subnet_required     = var.private_subnet_required  
-  public_subnet_required      = var.public_subnet_required   
-  internet_gateway_required   = var.internet_gateway_required
   security_group_name         = var.security_group_name
   ami_name                    = var.ami_name
   virtualization_type         = var.virtualization_type

@@ -3,10 +3,6 @@ variable "vpc_name"                     { type = string }
 variable "public_subnet_name"           { type = string }
 variable "private_subnet_name"          { type = string }
 variable "internet_gateway_name"        { type = string }
-variable "vpc_required"                 { type = bool }
-variable "private_subnet_required"      { type = bool }
-variable "public_subnet_required"       { type = bool }
-variable "internet_gateway_required"    { type = bool }
 
 // security group variables
 variable "security_group_name"          { type = string }

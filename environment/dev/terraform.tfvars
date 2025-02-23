@@ -3,10 +3,6 @@ vpc_name                  = "shiv_vpc"
 public_subnet_name        = "shiv_public_subnet"
 private_subnet_name       = "shiv_private_subnet"
 internet_gateway_name     = "shiv_internet_gateway"
-vpc_required              = true
-private_subnet_required   = true
-public_subnet_required    = true
-internet_gateway_required = true
 
 //security_group.tf variables
 security_group_name = "web_security_group"
