@@ -20,4 +20,3 @@ min_size_public             = 1
 desired_capacity_private    = 1
 min_size_private            = 1
 max_size_private            = 1
-environment                 = "dev"
