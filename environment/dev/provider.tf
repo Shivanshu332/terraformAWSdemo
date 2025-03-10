@@ -5,7 +5,7 @@ provider "aws" {
 terraform {
   backend "s3" {
     bucket = "shivanshu-terraform-state"
-    key    = "terraform-ec2/ec2state.tfstate"
+    key    = "terraform-ec2/${var.environment}/ec2state.tfstate"
     region = "ap-south-1"
   }
 }
