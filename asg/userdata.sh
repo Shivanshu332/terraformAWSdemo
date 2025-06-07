@@ -12,21 +12,6 @@ INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
 # Install the AWS CLI
 yum install -y aws-cli
 
-# Define custom username and password
-USERNAME="cadmin"
-PASSWORD="1234"
-
-# Create the new user and set the password
-useradd -m -s /bin/bash "$USERNAME"
-echo "$USERNAME:$PASSWORD" | chpasswd
-
-# Grant sudo privileges (optional)
-usermod -aG sudo "$USERNAME"
-
-# Enable password authentication in SSH
-sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
-sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
-
 # Restart SSH service to apply changes
 systemctl restart sshd
 
