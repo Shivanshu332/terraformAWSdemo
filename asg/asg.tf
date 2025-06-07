@@ -18,7 +18,7 @@ resource "aws_launch_template" "public_launch_template" {
     vpc_security_group_ids = [aws_security_group.webSG.id]
     user_data              = base64encode(file("${path.module}/userdata.sh"))
     network_interfaces {
-        subnet_id = aws_subnet.shiv_public_subnet.id
+        subnet_id = module.vpc.public_subnet_id
     }
 }
 
@@ -29,7 +29,7 @@ resource "aws_launch_template" "private_launch_template" {
     vpc_security_group_ids = [aws_security_group.webSG.id]
     user_data              = base64encode(file("${path.module}/userdata.sh"))
     network_interfaces {
-    subnet_id = aws_subnet.shiv_private_subnet.id
+    subnet_id = module.vpc.private_subnet_id
     }
 }
 

@@ -11,3 +11,6 @@ variable "min_size_public"              { type = number }
 variable "desired_capacity_private"     { type = number }
 variable "min_size_private"             { type = number }
 variable "max_size_private"             { type = number }
+variable "public_subnet_id"             {}
+variable "private_subnet_id"            {}
+variable "security_group_id"            {}

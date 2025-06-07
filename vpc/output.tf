@@ -1,11 +1,11 @@
 output "vpc_id" {
-    value = aws_vpc.main.id
+    value = aws_vpc.shiv_vpc.id
 }
 
-output "public_subnet_ids" {
-    value = aws_subnet.public[*].id
+output "public_subnet_id" {
+    value = aws_subnet.shiv_public_subnet.id
 }
 
-output "private_subnet_ids" {
-    value = aws_subnet.private[*].id
+output "private_subnet_id" {
+    value = aws_subnet.shiv_private_subnet.id
 }

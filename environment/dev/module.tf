@@ -7,13 +7,13 @@ module  vpc  {
 }
 
 module security_group{
-  source = "../../security_group"
+  source                      = "../../security_group"
   security_group_name         = var.security_group_name
   vpc_id                      = module.vpc.vpc_id
 }
 
 module asg{
-  source = "../../asg"
+  source                      = "../../asg"
   ami_name                    = var.ami_name
   virtualization_type         = var.virtualization_type
   instance_type_public        = var.instance_type_public
@@ -26,4 +26,7 @@ module asg{
   desired_capacity_private    = var.desired_capacity_private
   min_size_private            = var.min_size_private       
   max_size_private            = var.max_size_private
+  public_subnet_id            = module.vpc.public_subnet_id
+  private_subnet_id           = module.vpc.private_subnet_id
+  security_group_id           = module.security_group.security_group_id 
 }
