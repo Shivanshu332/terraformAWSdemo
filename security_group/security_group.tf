@@ -34,7 +34,7 @@ resource "aws_security_group" "web_instance_SG" {
         from_port   = 80
         to_port     = 80
         protocol    = "http"
-        security_groups = [ aws_security_group.web_loadbalancer_SG ]
+        security_groups = [ aws_security_group.web_loadbalancer_SG.id ]
     }
 
     ingress {
