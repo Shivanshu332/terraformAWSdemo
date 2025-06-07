@@ -8,7 +8,7 @@ variable "internet_gateway_name"        { type = string }
 variable "security_group_name"          { type = string }
 
 // region
-variable "region"                       { type = string }
+variable "environment"                  { type = string }
 
 //asg variables
 variable "ami_name"                     { type = string }
@@ -23,3 +23,7 @@ variable "min_size_public"              { type = number }
 variable "desired_capacity_private"     { type = number }
 variable "min_size_private"             { type = number }
 variable "max_size_private"             { type = number }
+
+local {
+    s3_backend = "terraform-ec2"+ var.environment +"/ec2state.tfstate" 
+}
