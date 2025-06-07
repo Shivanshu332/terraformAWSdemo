@@ -28,5 +28,12 @@ module asg{
   max_size_private            = var.max_size_private
   public_subnet_id            = module.vpc.public_subnet_id
   private_subnet_id           = module.vpc.private_subnet_id
-  security_group_id           = module.security_group.security_group_id 
+  instance_security_group_id  = module.security_group.instance_security_group_id
+}
+
+module lb{
+  source                      = "../../loadbalancer"
+  public_subnet_id            = module.vpc.public_subnet_id
+  lb_security_group_id        = module.security_group.loadbalancer_security_group_id
+  vpc_id                      = module.vpc.vpc_id
 }

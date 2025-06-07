@@ -18,7 +18,7 @@ resource "aws_subnet" "shiv_public_subnet" {
 resource "aws_subnet" "shiv_private_subnet" {
     vpc_id            = aws_vpc.shiv_vpc.id
     cidr_block        = "10.0.2.0/24"
-    availability_zone = "ap-south-1b"
+    availability_zone = "ap-south-1a"
     tags = {
         Name = var.private_subnet_name
     }
