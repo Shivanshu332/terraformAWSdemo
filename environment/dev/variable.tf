@@ -25,5 +25,5 @@ variable "min_size_private"             { type = number }
 variable "max_size_private"             { type = number }
 
 locals {
-    s3_backend = "terraform-ec2-${var.environment}/ec2state.tfstate" 
+    s3_backend =  
 }
