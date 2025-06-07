@@ -23,7 +23,3 @@ variable "min_size_public"              { type = number }
 variable "desired_capacity_private"     { type = number }
 variable "min_size_private"             { type = number }
 variable "max_size_private"             { type = number }
-
-locals {
-    s3_backend =  
-}
