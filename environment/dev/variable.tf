@@ -7,6 +7,9 @@ variable "internet_gateway_name"        { type = string }
 // security group variables
 variable "security_group_name"          { type = string }
 
+// region
+variable "region"                       { type = string }
+
 //asg variables
 variable "ami_name"                     { type = string }
 variable "virtualization_type"          { type = string }

@@ -7,6 +7,9 @@ internet_gateway_name     = "shiv_internet_gateway"
 //security_group.tf variables
 security_group_name = "web_security_group"
 
+//region detail
+region                      = "dev"
+
 //asg.tf variables
 ami_name                    = "RHEL-9.5.0_HVM-20241211-x86_64-0-Hourly2-GP3"
 virtualization_type         = "hvm"
