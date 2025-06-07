@@ -1,6 +1,6 @@
 resource "aws_security_group" "webSG" {
     name   = var.security_group_name
-    vpc_id = aws_vpc.shiv_vpc.id
+    vpc_id = module.vpc.vpc_id
 
     tags = {
         Name = var.security_group_name

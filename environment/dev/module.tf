@@ -9,6 +9,7 @@ module  vpc  {
 module security_group{
   source = "../../security_group"
   security_group_name         = var.security_group_name
+  vpc_id                      = module.vpc.vpc_id
 }
 
 module asg{
