@@ -15,10 +15,11 @@ resource "aws_launch_template" "private_launch_template" {
     name_prefix            = "private_launch_template"
     image_id               = data.aws_ami.rhel.id
     instance_type          = var.instance_type_private
-    vpc_security_group_ids = [var.instance_security_group_id]
     user_data              = base64encode(file("${path.module}/userdata.sh"))
     network_interfaces {
-    subnet_id = var.private_subnet_id
+        subnet_id = var.private_subnet_id
+        security_groups = [ var.instance_security_group_id ]
+        
     }
 }
 
