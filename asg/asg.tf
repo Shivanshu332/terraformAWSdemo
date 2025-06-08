@@ -16,6 +16,7 @@ resource "aws_launch_template" "private_launch_template" {
     image_id               = data.aws_ami.rhel.id
     instance_type          = var.instance_type_private
     user_data              = base64encode(file("${path.module}/userdata.sh"))
+    
     network_interfaces {
         subnet_id = var.private_subnet_id
         security_groups = [ var.instance_security_group_id ]
@@ -24,10 +25,10 @@ resource "aws_launch_template" "private_launch_template" {
 }
 
 resource "aws_autoscaling_group" "asg_private" {
-desired_capacity = var.desired_capacity_private
-max_size         = var.max_size_private
-min_size         = var.min_size_private
-
+    desired_capacity   = var.desired_capacity_private
+    max_size           = var.max_size_private
+    min_size           = var.min_size_private
+    target_group_arns  = var.target_group_arn
     launch_template {
         id      = aws_launch_template.private_launch_template.id
         version = "$Latest"

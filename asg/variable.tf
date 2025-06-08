@@ -8,6 +8,7 @@ variable "min_size_private"             { type = number }
 variable "max_size_private"             { type = number }
 variable "private_subnet_id"            {}
 variable "instance_security_group_id"   {}
+variable "target_group_arn"             {}
 
 //asg scheduler variables
 variable "morning_desired_capacity"     { type = number }

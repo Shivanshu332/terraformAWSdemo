@@ -31,6 +31,7 @@ module asg{
   evening_recurrence          = var.evening_recurrence
   private_subnet_id           = module.vpc.private_subnet_id
   instance_security_group_id  = module.security_group.instance_security_group_id
+  target_group_arn            = module.lb.target_group_arn
 }
 
 module lb{
