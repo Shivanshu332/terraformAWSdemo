@@ -12,13 +12,8 @@ INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
 # Install the AWS CLI
 yum install -y aws-cli
 
-# Restart SSH service to apply changes
-systemctl restart sshd
-
-
 # Ensure the web root directory exists
 mkdir -p /var/www/html
-
 
 # Create a simple HTML file with portfolio content
 cat <<EOF > /var/www/html/index.html

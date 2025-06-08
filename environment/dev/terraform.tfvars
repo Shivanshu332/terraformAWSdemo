@@ -1,11 +1,11 @@
 //vpc.tf variables
-vpc_name                  = "shiv_vpc"
-public_subnet_name        = "shiv_public_subnet"
-private_subnet_name       = "shiv_private_subnet"
-internet_gateway_name     = "shiv_internet_gateway"
+vpc_name                    = "shiv_vpc"
+public_subnet_name          = "shiv_public_subnet"
+private_subnet_name         = "shiv_private_subnet"
+internet_gateway_name       = "shiv_internet_gateway"
 
 //security_group.tf variables
-security_group_name = "web_security_group"
+security_group_name         = "web_security_group"
 
 //environment detail
 environment                 = "dev"
