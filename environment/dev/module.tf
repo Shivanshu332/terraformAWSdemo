@@ -36,6 +36,7 @@ module asg{
 module lb{
   source                      = "../../loadbalancer"
   public_subnet_id            = module.vpc.public_subnet_id
+  public_subnet2_id           = module.vpc.public_subnet2_id
   lb_security_group_id        = module.security_group.loadbalancer_security_group_id
   vpc_id                      = module.vpc.vpc_id
 }

@@ -6,6 +6,11 @@ output "public_subnet_id" {
     value = aws_subnet.shiv_public_subnet.id
 }
 
+output "public_subnet2_id" {
+    value = aws_subnet.shiv_public_subnet2.id
+}
+
+
 output "private_subnet_id" {
     value = aws_subnet.shiv_private_subnet.id
 }

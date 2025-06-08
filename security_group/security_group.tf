@@ -27,7 +27,7 @@ resource "aws_security_group" "web_instance_SG" {
     vpc_id = var.vpc_id
 
     tags = {
-        Name = var.security_group_name
+        Name = "web_instance_SG"
     }
 
     ingress {

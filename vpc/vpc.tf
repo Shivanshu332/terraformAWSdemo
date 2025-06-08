@@ -15,6 +15,17 @@ resource "aws_subnet" "shiv_public_subnet" {
     }
 }
 
+resource "aws_subnet" "shiv_public_subent2" {
+    vpc_id                  = aws_vpc.shiv_vpc.id
+    cidr_block              = "10.0.3.0/24"
+    availability_zone       = "ap-south-1b"
+    map_public_ip_on_launch = true
+
+    tags = {
+        Name = "public_subnet_2"
+    }
+}
+
 resource "aws_subnet" "shiv_private_subnet" {
     vpc_id            = aws_vpc.shiv_vpc.id
     cidr_block        = "10.0.2.0/24"

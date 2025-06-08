@@ -3,7 +3,7 @@ resource "aws_lb" "web_alb" {
     internal           = false
     load_balancer_type = "application"
     security_groups    = [var.lb_security_group_id]
-    subnets            = [var.public_subnet_id]
+    subnets            = [ var.public_subnet_id, var.public_subnet2_id ]
 }
 
 
