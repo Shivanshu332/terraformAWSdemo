@@ -16,17 +16,19 @@ module asg{
   source                      = "../../asg"
   ami_name                    = var.ami_name
   virtualization_type         = var.virtualization_type
-  instance_type_public        = var.instance_type_public
   instance_type_private       = var.instance_type_private
-  instance_name_public        = var.instance_name_public
-  instance_name_private       = var.instance_name_private
-  desired_capacity_public     = var.desired_capacity_public
-  max_size_public             = var.max_size_public        
-  min_size_public             = var.min_size_public        
+  instance_name_private       = var.instance_name_private    
   desired_capacity_private    = var.desired_capacity_private
   min_size_private            = var.min_size_private       
   max_size_private            = var.max_size_private
-  public_subnet_id            = module.vpc.public_subnet_id
+  morning_desired_capacity    = var.morning_desired_capacity
+  morning_min_size            = var.morning_min_size
+  morning_max_size            = var.morning_max_size
+  morning_recurrence          = var.morning_recurrence
+  evening_desired_capacity    = var.evening_desired_capacity
+  evening_min_size            = var.evening_min_size
+  evening_max_size            = var.evening_max_size
+  evening_recurrence          = var.evening_recurrence
   private_subnet_id           = module.vpc.private_subnet_id
   instance_security_group_id  = module.security_group.instance_security_group_id
 }

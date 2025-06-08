@@ -23,3 +23,13 @@ variable "min_size_public"              { type = number }
 variable "desired_capacity_private"     { type = number }
 variable "min_size_private"             { type = number }
 variable "max_size_private"             { type = number }
+
+//asg scheduler variables
+variable "morning_desired_capacity"     { type = number }
+variable "morning_min_size"             { type = number }
+variable "morning_max_size"             { type = number }
+variable "morning_recurrence"           { type = string }
+variable "evening_desired_capacity"     { type = number }
+variable "evening_min_size"             { type = number }
+variable "evening_max_size"             { type = number }
+variable "evening_recurrence"           { type = string }
