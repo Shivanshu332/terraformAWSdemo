@@ -23,7 +23,7 @@ resource "aws_security_group" "web_loadbalancer_SG" {
 
 
 resource "aws_security_group" "web_instance_SG" {
-    name   = var.security_group_name
+    name   = "web_instance_SG"
     vpc_id = var.vpc_id
 
     tags = {
