@@ -28,7 +28,7 @@ resource "aws_autoscaling_group" "asg_private" {
     desired_capacity   = var.desired_capacity_private
     max_size           = var.max_size_private
     min_size           = var.min_size_private
-    target_group_arns  = var.target_group_arn
+    target_group_arns  = [ var.target_group_arn ]
     launch_template {
         id      = aws_launch_template.private_launch_template.id
         version = "$Latest"
